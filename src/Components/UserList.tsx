@@ -1,15 +1,17 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useTypeSelector } from '../hools/useTypeSelector';
+import { useAppDispatch } from '../hooks/useTypeSelector';
+import { useTypeSelector } from '../hooks/useTypeSelector';
 import { fetchUsers } from '../redux/action-creators/user';
+import { UserAction } from '../types/user';
 
 const UserList = () => {
   const { error, users, loading } = useTypeSelector((state) => state.user);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch()
 
-  const getUsers = () => {
-    dispatch(fetchUsers());
-  };
+React.useEffect(() => {
+  dispatch((fetchUsers() as unknown as UserAction))
+  // fetchUsers()
+}, [])
 
   if (loading) {
     return <h1>Идёт загрузка</h1>;
