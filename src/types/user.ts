@@ -28,4 +28,4 @@ export interface UserState {
   error: null | string;
 }
 
-export type userAction = fetchUser | fetchUserSuccess | fetchUserError;
+export type UserAction = fetchUser | fetchUserSuccess | fetchUserError;
